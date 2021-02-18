@@ -6,18 +6,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: ''
+    user: '',
+    score: 0
   },
   mutations: {
+    setUser (state, { name, score }) {
+      state.name = name
+      state.score = score
+    }
   },
   actions: {
-    login(context, payload) {
+    login (context, payload) {
       return axios({
         method: 'POST',
+        url: 'login',
         data: {
           name: payload
         }
       })
     }
+
   }
 })

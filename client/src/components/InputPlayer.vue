@@ -31,13 +31,17 @@ export default {
       name: ''
     }
   },
-  computed: {
-    login() {
+  methods: {
+    login () {
       this.$store.dispatch('login', this.name)
         .then(user => {
+          const payload = user.data.newPlayer
+          localStorage.setItem('name', payload.name)
+          this.$router.push('/about')
+          this.$store.dispatch('setUser', payload)
         })
-        .catch({
-
+        .catch(err => {
+          console.log(err)
         })
     }
   }
