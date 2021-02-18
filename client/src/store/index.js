@@ -6,9 +6,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: ''
+    user: '',
+    score: 0
   },
   mutations: {
+    setUser(state, {name, score}) {
+      state.name = name
+      state.score = score
+    }
   },
   actions: {
     login(context, payload) {
@@ -18,6 +23,16 @@ export default new Vuex.Store({
           name: payload
         }
       })
+        .then(user => {
+          console.log(user);
+          context.commit('setUser', user)
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
+    setUser(context, payload) {
+
     }
   }
 })

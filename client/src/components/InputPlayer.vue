@@ -34,11 +34,6 @@ export default {
   computed: {
     login() {
       this.$store.dispatch('login', this.name)
-        .then(user => {
-        })
-        .catch({
-
-        })
     }
   }
 }
