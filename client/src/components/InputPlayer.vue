@@ -9,12 +9,12 @@
       <b-col md="6">
         <b-card-body title="Welcome To GTM">
           <b-card-text>
-           <div class="form-group">
-            <label for="example1">Input Your Name</label>
-            <input type="text" id="example1" class="form-control">
-           </div>
+            <div class="form-group">
+              <label for="example1">Input Your Name</label>
+              <input v-model="name" type="text" id="example1" class="form-control">
+            </div>
           </b-card-text>
-          <button class="btn btn-success">Get Started</button>
+          <button @click="login" class="btn btn-success">Get Started</button>
         </b-card-body>
       </b-col>
     </b-row>
@@ -28,7 +28,17 @@ export default {
   name: 'InputPlayer',
   data () {
     return {
-      file: undefined
+      name: ''
+    }
+  },
+  computed: {
+    login() {
+      this.$store.dispatch('login', this.name)
+        .then(user => {
+        })
+        .catch({
+
+        })
     }
   }
 }
