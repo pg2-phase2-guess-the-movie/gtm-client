@@ -6,7 +6,7 @@
         <h1>Congratulations!</h1>
       </div>
       <div class="mt-5">
-        <button class="btn btn-custom">QUIT GAME</button>
+        <button @click.prevent="quit" class="btn btn-custom">QUIT GAME</button>
       </div>
       <div class="pedestal position-absolute d-flex justify-content-center align-items-end bottom-0">
         <div class="second">
@@ -33,6 +33,12 @@
 <script>
 export default {
   name: 'Result',
+  methods: {
+    quit () {
+      localStorage.clear()
+      this.$router.push('/')
+    }
+  },
   created () {
     this.$confetti.start()
   }

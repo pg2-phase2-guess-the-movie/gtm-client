@@ -1,7 +1,7 @@
 <template>
   <!-- QUIT GAME -->
   <div class="floating-button position-fixed">
-    <button class="btn btn-custom">QUIT GAME</button>
+    <button @click.prevent="quit" class="btn btn-custom">QUIT GAME</button>
   </div>
   <!-- QUIT GAME ENDS -->
 </template>
@@ -14,7 +14,7 @@ export default {
       localStorage.clear()
       this.$router.push('/')
     }
-  },
+  }
 }
 </script>
 
