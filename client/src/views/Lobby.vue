@@ -1,11 +1,7 @@
 <template>
   <!-- LOBBY -->
   <section class="lobby color-fading">
-    <div class="card" v-for="user in listUser" :key="user.name">
-      <div class="card-body">
-        {{user.name}}
-      </div>
-    </div>
+    <Tagname/>
     <div class="container full-height d-flex flex-column align-items-center justify-content-center">
       <button @click.prevent="start" class="btn btn-custom">START QUIZ</button>
       <h3 class="mt-5">Players join: {{listUser.length}}</h3>
@@ -22,7 +18,8 @@ import Tagname from '../components/Tagname'
 export default {
   name: 'Lobby',
   components: {
-    Quitbutton
+    Quitbutton,
+    Tagname
   },
   computed: {
     listUser () {
