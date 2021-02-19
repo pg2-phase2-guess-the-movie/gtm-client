@@ -9,7 +9,7 @@
       <div class="login-form mt-5 mb-5">
         <form @submit.prevent="login">
           <div class="mb-3">
-            <input v-model="name" class="form-control form-custom" placeholder="Your Nickname..">
+            <input v-model="name" type="text" class="form-control form-custom" placeholder="Your Nickname..">
           </div>
           <button type="submit" class="btn btn-fullwidth btn-custom">I'M PLAY</button>
         </form>
@@ -29,18 +29,16 @@ export default {
       name: ''
     }
   },
+  sockets: {
+    connect () {
+      console.log('--------------connected')
+    }
+  },
   methods: {
     login () {
-      this.$store.dispatch('login', this.name)
-        .then(user => {
-          const payload = user.data.newPlayer
-          localStorage.setItem('name', payload.name)
-          this.$router.push('/lobby')
-          this.$store.dispatch('setUser', payload)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      this.$socket.emit('login', { name: this.name })
+      this.$router.push('/lobby')
+      localStorage.setItem('name', this.name)
     }
   }
 }

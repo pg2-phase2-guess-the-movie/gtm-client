@@ -1,49 +1,42 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from '../../api/axios'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: '',
-    score: 0,
-    quizzes: []
+    user: [],
+    questionIndex: 0,
+    question: {}
   },
   mutations: {
-    setUser (state, { name, score }) {
-      state.name = name
-      state.score = score
+    setUser (state, payload) {
+      state.user = payload
     },
-    setQuizzes (state, payload) {
-      state.quizzes = payload
+    question (state, payload) {
+      state.question = payload
+    },
+    setScore (state, payload) {
+      state.user.forEach(user => {
+        if (user.name === localStorage.name) {
+          user.score += payload
+        }
+      })
+    },
+    addIndex (state, payload) {
+      state.questionIndex += payload
     }
   },
   actions: {
-    login (context, payload) {
-      return axios({
-        method: 'POST',
-        url: 'login',
-        data: {
-          name: payload
-        }
-      })
-    },
     setUser (context, payload) {
       context.commit('setUser', payload)
     },
-    getQuizzes (context, payload) {
-      return axios({
-        method: 'GET',
-        url: '/quiz',
-        headers: {
-          name: localStorage.getItem('name')
-        }
-      })
+    question (context, payload) {
+      context.commit('question', payload)
     },
-    setQuizzes (context, payload) {
-      context.commit('setQuizzes', payload)
+    setScore (context, payload) {
+      context.commit('setScore', payload)
+      context.commit('addIndex', 1)
     }
-
   }
 })
