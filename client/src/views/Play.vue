@@ -31,12 +31,15 @@
         </div>
       </div>
     </div>
+    <quitbutton />
   </section>
   <!-- GAME VIEW ENDS -->
 </template>
 
 <script>
+import Quitbutton from '../components/Quitbutton.vue'
 export default {
+  components: { Quitbutton },
   name: 'Play'
 }
 </script>

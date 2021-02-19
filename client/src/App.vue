@@ -164,4 +164,14 @@ animation: colorchange 20s infinite;
 .pedestal div.third {
   height: 150px;
 }
+
+.floating-button {
+  top: 15px;
+  right: 15px;
+}
+
+.floating-button button {
+  background-color: #e74c3c !important;
+  font-size: 16px !important;
+}
 </style>
