@@ -39,8 +39,18 @@
 <script>
 import Quitbutton from '../components/Quitbutton.vue'
 export default {
+  name: 'Play',
   components: { Quitbutton },
-  name: 'Play'
+  created () {
+    this.$store.dispatch('getQuizzes')
+      .then(res => {
+        console.log(res.data, 'from play')
+        this.$store.dispatch('setQuizzes', res.data.quizzes)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 }
 </script>
 
