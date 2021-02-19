@@ -39,13 +39,6 @@ export default {
       this.$socket.emit('login', { name: this.name })
       this.$router.push('/lobby')
       localStorage.setItem('name', this.name)
-      // this.$store.dispatch('login', this.name)
-      //   .then(user => {
-      //     const payload = user.data.newPlayer
-      //   })
-      //   .catch(err => {
-      //     console.log(err)
-      //   })
     }
   }
 }

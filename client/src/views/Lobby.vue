@@ -11,12 +11,14 @@
       <h3 class="mt-5">Players join: {{listUser.length}}</h3>
     </div>
     <quitbutton />
+    <tagname />
   </section>
   <!-- LOBBY ENDS -->
 </template>
 
 <script>
 import Quitbutton from '../components/Quitbutton'
+import Tagname from '../components/Tagname'
 export default {
   name: 'Lobby',
   components: {
