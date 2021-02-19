@@ -7,9 +7,9 @@
         <img src="../assets/icon_emoji.png" alt="">
       </div>
       <div class="login-form mt-5 mb-5">
-        <form @submit="login">
+        <form @submit.prevent="login">
           <div class="mb-3">
-            <input v-model="name" type="email" class="form-control form-custom" placeholder="Your Nickname..">
+            <input v-model="name" class="form-control form-custom" placeholder="Your Nickname..">
           </div>
           <button type="submit" class="btn btn-fullwidth btn-custom">I'M PLAY</button>
         </form>
@@ -35,7 +35,7 @@ export default {
         .then(user => {
           const payload = user.data.newPlayer
           localStorage.setItem('name', payload.name)
-          this.$router.push('/about')
+          this.$router.push('/lobby')
           this.$store.dispatch('setUser', payload)
         })
         .catch(err => {
