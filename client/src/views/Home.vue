@@ -37,8 +37,8 @@ export default {
   methods: {
     login () {
       this.$socket.emit('login', { name: this.name })
-      this.$router.push('/lobby')
       localStorage.setItem('name', this.name)
+      this.$router.push('/lobby')
     }
   }
 }

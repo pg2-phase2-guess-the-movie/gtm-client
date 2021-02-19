@@ -1,6 +1,7 @@
 <template>
   <!-- GAME VIEW -->
   <section class="game-view position-relative">
+    <Tagname/>
     <div class="container full-height d-flex align-items-center justify-content-center">
       <!-- QUIZ CARD -->
       <div class="quiz-card row full-width">
@@ -38,13 +39,14 @@
 
 <script>
 import Quitbutton from '../components/Quitbutton.vue'
+import Tagname from '../components/Tagname'
 export default {
   data () {
     return {
       answer: ''
     }
   },
-  components: { Quitbutton },
+  components: { Quitbutton, Tagname },
   name: 'Play',
   sockets: {
     question (payload) {
