@@ -24,6 +24,9 @@ export default new Vuex.Store({
           name: payload
         }
       })
+    },
+    setUser (context, payload) {
+      context.commit('setUser', payload)
     }
 
   }
